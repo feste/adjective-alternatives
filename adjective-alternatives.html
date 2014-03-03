@@ -1,0 +1,92 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Title</title>
+  <meta name="viewport" content="initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+</head> 
+<body>
+
+<div class="progress">
+  <span>Progress:</span>
+  <div class="bar-wrapper">
+    <div class="bar" width="0%">
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="consent">
+  <img src="stanford.png" alt="Stanford University">
+  <br>
+  <br>
+  <!-- <p id='logo-text'>Stanford Language and Cognition Lab</p> -->
+  <p class="block-text">In this experiment, you will ______.</p>
+  <p class="block-text">This experiment should take about ______ minutes to complete.</b></p> 
+  <button type="button" onClick="this.blur(); experiment.instructions()">Start
+  </button>
+  <p class="block-text">(Note: you won't be able to preview this HIT before
+  accepting it.)</p>
+  <p class="block-text" id="mustaccept"> You must accept the HIT in order to
+  continue.</p>
+ 	<p class="block-text" id="legal">By answering the following questions, you 
+ 	are participating in a study being performed by cognitive scientists in the 
+ 	Stanford Department of Psychology. If you have questions about this research, 
+ 	please contact Erin Bennett at 
+ 	<a href="mailto:erindb@stanford.edu">erindb@stanford.edu</a> 
+ 	or Noah Goodman at ngoodman@stanford.edu. You must be at least 18 years old 
+ 	to participate. Your participation in this research is voluntary. You may 
+ 	decline to answer any or all of the following questions. You may decline
+ 	further participation, at any time, without adverse consequences. Your 
+ 	anonymity is assured; the researchers who have requested your
+ 	participation will not receive any personal information about you.</p>
+</div>
+
+<div class="slide" id="instructions">
+  <h2>Instructions</h2>
+  <p>In this experiment, we would like you to describe some quantities.</p>
+  <p>You will know the quantity being describe and tell us what word or phrase you think someone would use to describe that quantity.</p>
+  <p><b>Please use a simple descriptive word or phrase and DO NOT USE NUMBERS, or we will reject your data.</b></p>
+  <p>Please click "Begin" when you're ready to start.</p>
+  <button type="button" id="begin" value="Begin">
+  Begin</button>
+</div>
+
+<div class="slide" id="trial">
+<p><span class="name"></span> saw a <span class="item"></span> and wants to talk about the <span class="domain"></span> of the <span class="item"></span> <i>without actually saying the <span class="domain"></span></i>.</p>
+<p>Here's the <span class="domain"></span> of the <span class="item"></span> he saw: <b><span class="value"></span></b>.</p>
+<p><span class="name"></span> says, "The <span class="item"></span> was <input type="text" id="response"></input>."</p>
+<button type="button" class="continue">Continue</button>
+<p class="err">Please describe the <span class="item"></span>.</p>
+<p id="numError">No numbers, please!</p>
+</div>
+
+<div class="slide" id="questionaire">
+  <p>Last section! Please enter your responses below, and then click 'Submit'.</p>
+  <br/>
+  <form id="questionaireform">
+  <p>Your age: <input type="text" name="age"></input></p>
+  <br/>
+  <p>Your native language*:<input type="text" name="lg"></input><br/>(the language that
+  was spoken at home when you were a child)</p>
+  <br/>
+  <p>We would be interested in any comments you have about this experiment. Please type them here:</p>
+  <textarea rows="7" cols="70" name="comments"></textarea>
+  <br/>
+  <br/>
+  <button type="button" id="formsubmit">Submit</button>
+  </form>
+  <br/>
+  <p>*required</p>
+</div>
+
+<div class="slide" id="finished">
+  You're finished - thanks for participating! Submitting to Mechanical Turk...
+</div>
+
+<!-- Scripts -->
+<script src="jquery-1.11.0.min.js"></script>
+<script src="mmturkey.js"></script>
+<script src="browserCheck.js"></script>
+<script src="adjective-alternatives.js"></script>
+</body>
+</html>
