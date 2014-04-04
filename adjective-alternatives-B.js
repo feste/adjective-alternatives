@@ -73,13 +73,25 @@ var experiment = {
     trialData["item"] = item;
     trialData["domain"] = domain;
 
+    var nExtraResponses = 0;
+
     $(".continue").click(function() {
       var response = $("#response").val();
       if (response.length > 0) {
         /*var isNumber = /[0-9]|(two|thousand|eighty|sixty|forty|five|four)/.test(response);
         if (!isNumber) {*/
+        if (response == adjective) {
+          $("#sameError").show();
+        } else {
           $(".continue").unbind("click");
+          $("#addAnAnswer").unbind("click");
           $(".err").hide();
+          trialData["extraResponses"] = [];
+          for (var i=0;i<nExtraResponses;i++) {
+            var extraResponse = $("#response" + i).val();
+            trialData["extraResponses"].push(extraResponse)
+          }
+          $("#moreAnswers").html("");
           trialData["response"] = response;
           experiment.data["trial" + qNumber] = trialData;
           $("#response").val("");
@@ -88,13 +100,19 @@ var experiment = {
           } else {
             experiment.questionaire();
           }
-        /*} else {
-          $("#numError").show();
-        }*/
+        }
       } else {
-        $(".err").show();
+        $("#blankError").show();
       }
     })
+
+    $("#addAnAnswer").click(function() {
+      var baseQ = $("#baseQ").html();
+      $("#moreAnswers").append('<p>'+name+' could have said, "The '+item+' was <input type="text" id="response'+nExtraResponses+'"></input>."</p>');
+      nExtraResponses++;
+    })
+
+
   },
   
   questionaire: function() {

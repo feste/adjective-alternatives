@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Title</title>
+  <title>AltB</title>
   <meta name="viewport" content="initial-scale=1.0">
   <link rel="stylesheet" href="style.css" />
 </head> 
@@ -54,8 +54,11 @@
 <p>He said, <b>"The <span class="item"></span> was <span class="adjective"></span>."</b></p>
 <p>What else could <span class="name"></span> have said instead of <b>"<span class="adjective"></span>"</b>?
 <p><span class="name"></span> could have said, "The <span class="item"></span> was <input type="text" id="response"></input>."</p>
+<div id="moreAnswers"></div>
 <button type="button" class="continue">Continue</button>
-<p class="err">Please describe the <span class="item"></span>.</p>
+<button type="button" id="addAnAnswer">add an answer</button>
+<p class="err" id="blankError">Please describe the <span class="item"></span>.</p>
+<p class="err" id="sameError">Please *replace* the word <span class="name"></span> used with a different word (at least for the first entry).</p>
 <!-- <p id="numError">No numbers, please!</p> -->
 </div>
 

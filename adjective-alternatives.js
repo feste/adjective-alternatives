@@ -89,13 +89,22 @@ var experiment = {
     trialData["domain"] = domain;
     trialData["value"] = value;
 
+    var nExtraResponses = 0;
+
     $(".continue").click(function() {
       var response = $("#response").val();
       if (response.length > 0) {
         var isNumber = /[0-9]|(two|thousand|eighty|sixty|forty|five|four)/.test(response);
         if (!isNumber) {
           $(".continue").unbind("click");
+          $("#addAnAnswer").unbind("click");
           $(".err").hide();
+          trialData["extraResponses"] = [];
+          for (var i=0;i<nExtraResponses;i++) {
+            var extraResponse = $("#response" + i).val();
+            trialData["extraResponses"].push(extraResponse)
+          }
+          $("#moreAnswers").html("");
           trialData["response"] = response;
           experiment.data["trial" + qNumber] = trialData;
           $("#response").val("");
@@ -110,6 +119,12 @@ var experiment = {
       } else {
         $(".err").show();
       }
+    })
+
+    $("#addAnAnswer").click(function() {
+      var baseQ = $("#baseQ").html();
+      $("#moreAnswers").append('<p>' + name + ' says, "The ' + item + ' was <input type="text" id="response' + nExtraResponses + '"></input>."</p>');
+      nExtraResponses++;
     })
   },
   
